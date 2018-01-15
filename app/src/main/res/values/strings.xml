@@ -18,7 +18,7 @@
         <item>Under</item>
         <item>Above</item>
     </string-array>
-    <string name="on_off_notification">Notification ON/OFF</string>
+    <string name="on_off_notification">Notification OFF/ON</string>
     <string name="mute_notification">Mute notifications</string>
     <string name="threshold">Threshold</string>
     <string name="set_threshold">Set threshold</string>

@@ -24,8 +24,7 @@
         android:id="@+id/mute_notifications"
         android:textSize="15sp"
         android:textColor="@android:color/tab_indicator_text"
-        android:paddingBottom="5dp"
-        android:visibility="gone"/>
+        android:paddingBottom="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,8 +37,7 @@
             android:layout_weight="0.5"
             android:textSize="15sp"
             android:layout_height="wrap_content"
-            android:text="@string/threshold"
-            android:visibility="gone"/>
+            android:text="@string/threshold"/>
 
         <EditText
             android:id="@+id/threshold"
@@ -50,8 +48,7 @@
             android:textSize="15sp"
             android:textColor="@android:color/tab_indicator_text"
             android:text="50"
-            android:inputType="number"
-            android:visibility="gone"/>
+            android:inputType="number"/>
     </LinearLayout>
 
     <Spinner
@@ -62,7 +59,6 @@
         android:paddingLeft="0dp"
         android:layout_marginLeft="0dp"
         android:textColor="@android:color/tab_indicator_text"
-        android:entries="@array/notification_array"
-        android:visibility="gone"/>
+        android:entries="@array/notification_array"/>
 
 </LinearLayout>
