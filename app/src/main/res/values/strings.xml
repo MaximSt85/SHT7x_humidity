@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SHT7x_humidity</string>
+
+    <string name="plot">Plot</string>
+
+    <string name="sensor1">1</string>
+    <string name="sensor2">2</string>
+    <string name="sensor3">3</string>
+    <string name="sensor4">4</string>
+    <string name="sensor5">5</string>
+</resources>

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "243895624645",
+    "firebase_url": "https://my-first-project-176712.firebaseio.com",
+    "project_id": "my-first-project-176712",
+    "storage_bucket": "my-first-project-176712.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243895624645:android:e73433ba827f5d22",
+        "android_client_info": {
+          "package_name": "com.antoinecampbell.firebase.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243895624645-vkk5k79iepl6pn4119lejk5epbc5l87b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBV2uCu0R4X4AuJ7uiNs21BEuIbuZz0L-c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243895624645:android:a68bfec7effcd9dc",
+        "android_client_info": {
+          "package_name": "com.example.max.sht7x_humidity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243895624645-vkk5k79iepl6pn4119lejk5epbc5l87b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBV2uCu0R4X4AuJ7uiNs21BEuIbuZz0L-c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
