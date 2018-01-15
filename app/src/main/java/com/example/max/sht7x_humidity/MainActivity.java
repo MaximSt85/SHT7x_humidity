@@ -9,15 +9,22 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -40,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
     TextView textView_temperature4;
     TextView textView_humidity5;
     TextView textView_temperature5;
-    DatabaseReference database;
+    private DatabaseReference database;
+
+    ValueEventListener myValueEventListener;
+    ArrayList<String> references = new ArrayList<>();
+
+    private FirebaseUser currentUserAuth;
+    private static final int SIGN_IN_REQUEST_CODE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,34 +72,134 @@ public class MainActivity extends AppCompatActivity {
         textView_humidity5 = (TextView) this.findViewById(R.id.humidity5);
         textView_temperature5 = (TextView) this.findViewById(R.id.temperature5);
 
+        references.add("humidity1");
+        references.add("humidity2");
+        references.add("humidity3");
+        references.add("humidity4");
+        references.add("humidity5");
+        //references.add("time");
+        references.add("temperature1");
+        references.add("temperature2");
+        references.add("temperature3");
+        references.add("temperature4");
+        references.add("temperature5");
+
         database = FirebaseDatabase.getInstance().getReference();
 
-        database.child("humidity").addValueEventListener(new ValueEventListener() {
+        currentUserAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SIGN_IN_REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                makeToast(getResources().getString(R.string.signed_in), this);
+                currentUserAuth = FirebaseAuth.getInstance().getCurrentUser();
+                database.child("users").child(currentUserAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            setOnValueListener();
+                        }
+                        else {
+                            writeNewUser(currentUserAuth.getDisplayName(), currentUserAuth.getUid());
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+            else {
+                makeToast(getResources().getString(R.string.could_not_sign_you_in), this);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        }
+
+    }
+
+    private void writeNewUser(final String name, final String id) {
+        database.child("users").child(currentUserAuth.getUid()).child("id").setValue(currentUserAuth.getUid());
+        //String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        //database.child("users").child(currentUserAuth.getUid()).child("token").setValue(refreshedToken);
+        setOnValueListener();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.main_menu_plot){
+            Intent myIntent = new Intent(MainActivity.this, Sensor2Activity.class);
+            MainActivity.this.startActivity(myIntent);
+        }
+        if (item.getItemId() == R.id.main_menu_notification){
+            Intent myIntent = new Intent(MainActivity.this, NotificationActivity.class);
+            MainActivity.this.startActivity(myIntent);
+        }
+        return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (myValueEventListener != null) {
+            database.removeEventListener(myValueEventListener);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(currentUserAuth == null) {
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(),SIGN_IN_REQUEST_CODE);
+        }
+        else {
+            setOnValueListener();
+        }
+    }
+
+    private void setOnValueListener() {
+        database.child("sht75").child("humidity").addValueEventListener(myValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //dataSnapshot.getChildren();
-                List<Sensor> sensors = new ArrayList<>();
-                for (DataSnapshot sensorDataSnapshot : dataSnapshot.getChildren()) {
-                    String humidity = String.valueOf(sensorDataSnapshot.child("humidity").getValue());
-                    String temperature = String.valueOf(sensorDataSnapshot.child("temperature").getValue());
-                    //Sensor sensor = sensorDataSnapshot.getValue(Sensor.class);
-                    Sensor sensor = new Sensor(humidity, temperature);
-                    sensors.add(sensor);
+
+                ArrayList<Double> humidities = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    DataSnapshot humidityDataSnapshot = dataSnapshot.child(references.get(i));
+                    GenericTypeIndicator<List<Double>> humidityGeneric = new GenericTypeIndicator<List<Double>>(){};
+                    ArrayList<Double> humidity = (ArrayList<Double>) humidityDataSnapshot.getValue(humidityGeneric);
+                    humidities.add(humidity.get(humidity.size() - 1));
                 }
-                textView_humidity1.setText(sensors.get(0).getHumidity());
-                textView_temperature1.setText(sensors.get(0).getTemperature());
-                textView_humidity2.setText(sensors.get(1).getHumidity());
-                textView_temperature2.setText(sensors.get(1).getTemperature());
-                textView_humidity3.setText(sensors.get(2).getHumidity());
-                textView_temperature3.setText(sensors.get(2).getTemperature());
-                textView_humidity4.setText(sensors.get(3).getHumidity());
-                textView_temperature4.setText(sensors.get(3).getTemperature());
-                textView_humidity5.setText(sensors.get(4).getHumidity());
-                //textView_humidity5.setText(sensors.get(sensors.size() - 1).getHumidity());
-                textView_temperature5.setText(sensors.get(4).getTemperature());
-                //Log.v(TAG, "1111111111111111111111111111111111111111" + dataSnapshot.getChildren());
-                //Log.v(TAG, "1111111111111111111111111111111111111111" + dataSnapshot.getValue());
-                //Log.v(TAG, "1111111111111111111111111111111111111111" + sensors.get(0).getHumidity());
+
+                ArrayList<String> temperatures = new ArrayList<>();
+                for (int i = 5; i < references.size(); i++) {
+                    DataSnapshot temperatureDataSnapshot = dataSnapshot.child(references.get(i));
+                    temperatures.add(String.valueOf(dataSnapshot.child(references.get(i)).getValue()));
+                }
+
+                textView_humidity1.setText(String.valueOf(humidities.get(0)));
+                textView_temperature1.setText(temperatures.get(0));
+                textView_humidity2.setText(String.valueOf(humidities.get(1)));
+                textView_temperature2.setText(temperatures.get(1));
+                textView_humidity3.setText(String.valueOf(humidities.get(2)));
+                textView_temperature3.setText(temperatures.get(2));
+                textView_humidity4.setText(String.valueOf(humidities.get(3)));
+                textView_temperature4.setText(temperatures.get(3));
+                textView_humidity5.setText(String.valueOf(humidities.get(4)));
+                textView_temperature5.setText(temperatures.get(4));
+
             }
 
             @Override
@@ -120,4 +234,16 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, Sensor2Activity.class);
         MainActivity.this.startActivity(myIntent);
     }
+
+    public static void makeToast(String message, Context context) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
 }
+
+
+
+
+
+
+
+

@@ -76,6 +76,8 @@ public class Sensor2Activity extends AppCompatActivity {
     LineAndPointFormatter formatter5;
     private boolean[] state = {true, true, true, true, true};
 
+    ValueEventListener myValueEventListener;
+
     //comment from windows
     //one more comment
 
@@ -155,34 +157,7 @@ public class Sensor2Activity extends AppCompatActivity {
         humidityReferences.add("humidity4");
         humidityReferences.add("humidity5");
         humidityReferences.add("time");
-        database.child("sht75").child("humidity").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (int i = 0; i < humidityReferences.size(); i++) {
-                    DataSnapshot humidityDataSnapshot = dataSnapshot.child(humidityReferences.get(i));
-                    if (fistTime) {
-                        for (DataSnapshot humidityItemDataSnapshot : humidityDataSnapshot.getChildren()) {
-                            double humidity = (Double) humidityItemDataSnapshot.getValue();
-                            data.queues.get(i).add(humidity);
-                        }
-                    }
-                    else {
-                        GenericTypeIndicator<List<Double>> humidityGeneric = new GenericTypeIndicator<List<Double>>(){};
-                        ArrayList<Double> humidities = (ArrayList<Double>) humidityDataSnapshot.getValue(humidityGeneric);
-                        data.queues.get(i).add(humidities.get(humidities.size() - 1));
-                    }
-                }
-                fistTime = false;
-                data.SAMPLE_SIZE = data.queues.get(0).size();
-                firebaseNotifier.notifyObservers();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     @Override
@@ -325,18 +300,47 @@ public class Sensor2Activity extends AppCompatActivity {
         return true;
     }
 
+    private void setOnValueListener() {
+        database.child("sht75").child("humidity").addValueEventListener(myValueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (int i = 0; i < humidityReferences.size(); i++) {
+                    DataSnapshot humidityDataSnapshot = dataSnapshot.child(humidityReferences.get(i));
+                    if (fistTime) {
+                        for (DataSnapshot humidityItemDataSnapshot : humidityDataSnapshot.getChildren()) {
+                            double humidity = (Double) humidityItemDataSnapshot.getValue();
+                            data.queues.get(i).add(humidity);
+                        }
+                    }
+                    else {
+                        GenericTypeIndicator<List<Double>> humidityGeneric = new GenericTypeIndicator<List<Double>>(){};
+                        ArrayList<Double> humidities = (ArrayList<Double>) humidityDataSnapshot.getValue(humidityGeneric);
+                        data.queues.get(i).add(humidities.get(humidities.size() - 1));
+                    }
+                }
+                fistTime = false;
+                data.SAMPLE_SIZE = data.queues.get(0).size();
+                firebaseNotifier.notifyObservers();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     @Override
     public void onResume() {
-        // kick off the data generating thread:
-        /*myThread = new Thread(data);
-        myThread.start();*/
         super.onResume();
+        setOnValueListener();
     }
 
     @Override
     public void onPause() {
-        //data.stopThread();
         super.onPause();
+        database.removeEventListener(myValueEventListener);
     }
 
     class SampleDynamicXYDatasource {
@@ -361,7 +365,6 @@ public class Sensor2Activity extends AppCompatActivity {
         public static final int SERIES3 = 2;
         public static final int SERIES4 = 3;
         public static final int SERIES5 = 4;
-        public static final int numberOfSensors = 5;
         //public static final int SAMPLE_SIZE = 31;
         private ArrayList<LimitedQueue<Double>> queues = new ArrayList<>();
         private LimitedQueue<Double> queueHumidity1 = new LimitedQueue<>(111);
@@ -369,15 +372,10 @@ public class Sensor2Activity extends AppCompatActivity {
         private LimitedQueue<Double> queueHumidity3 = new LimitedQueue<>(111);
         private LimitedQueue<Double> queueHumidity4 = new LimitedQueue<>(111);
         private LimitedQueue<Double> queueHumidity5 = new LimitedQueue<>(111);
-        //private LimitedQueue<Double> queueHumidity = new LimitedQueue<>(111);
         private LimitedQueue<Double> queueTime = new LimitedQueue<>(111);
-        //public int SAMPLE_SIZE = queueHumidity.size();
         public int SAMPLE_SIZE = queueHumidity1.size();
 
         public SampleDynamicXYDatasource() {
-            /*for (int i=0;i<queueHumidity.limit;i++) {
-                queue.add(0.0);
-            }*/
             queues.add(queueHumidity1);
             queues.add(queueHumidity2);
             queues.add(queueHumidity3);
@@ -385,10 +383,6 @@ public class Sensor2Activity extends AppCompatActivity {
             queues.add(queueHumidity5);
             queues.add(queueTime);
         }
-
-        /*public void addToQueue(Float humidity) {
-            queue.add(humidity);
-        }*/
 
         public int getItemCount(int series) {
             return SAMPLE_SIZE;
@@ -398,8 +392,6 @@ public class Sensor2Activity extends AppCompatActivity {
             if (index >= SAMPLE_SIZE) {
                 throw new IllegalArgumentException();
             }
-            //return index;
-            //return queueTime.get(index);
             return queues.get(queues.size() - 1).get(index);
         }
 
@@ -410,25 +402,18 @@ public class Sensor2Activity extends AppCompatActivity {
             }
             switch (series) {
                 case SERIES1:
-                    //return queueHumidity.get(index);
                     return queues.get(series).get(index);
                 case SERIES2:
-                    //return queueHumidity.get(index);
                     return queues.get(series).get(index);
                 case SERIES3:
-                    //return queueHumidity.get(index);
                     return queues.get(series).get(index);
                 case SERIES4:
-                    //return queueHumidity.get(index);
                     return queues.get(series).get(index);
                 case SERIES5:
-                    //return queueHumidity.get(index);
                     return queues.get(series).get(index);
                 default:
                     throw new IllegalArgumentException();
             }
-            //Log.d(TAG, String.valueOf(Float.valueOf(sensors.get(index).getHumidity())));
-            //return Float.valueOf(sensors.get(index).getHumidity());
         }
     }
 
@@ -455,14 +440,12 @@ public class Sensor2Activity extends AppCompatActivity {
 
         @Override
         public Number getX(int index) {
-            //Log.d(TAG, "in getX");
             return datasource.getX(seriesIndex, index);
         }
 
         @Override
         public Number getY(int index) {
             if (seriesIndex == 0) {
-                //Log.d(TAG, "in getY" + index);
             }
             return datasource.getY(seriesIndex, index);
         }

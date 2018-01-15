@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/on_off_notification"
+        android:id="@+id/on_off_notifications"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/tab_indicator_text"
+        android:paddingBottom="15dp"/>
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mute_notification"
+        android:id="@+id/mute_notifications"
+        android:textSize="15sp"
+        android:textColor="@android:color/tab_indicator_text"
+        android:paddingBottom="5dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"
+            android:text="@string/threshold"/>
+
+        <EditText
+            android:id="@+id/threshold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="0dp"
+            android:layout_marginLeft="0dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/tab_indicator_text"
+            android:text="50"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/under_above"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:paddingLeft="0dp"
+        android:layout_marginLeft="0dp"
+        android:textColor="@android:color/tab_indicator_text"
+        android:entries="@array/notification_array"
+        android:visibility="gone"/>
+
+</LinearLayout>

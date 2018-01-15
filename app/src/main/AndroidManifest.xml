@@ -31,8 +31,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Sensor1Activity" />
         <activity android:name=".Sensor2Activity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+
     </application>
 
 </manifest>

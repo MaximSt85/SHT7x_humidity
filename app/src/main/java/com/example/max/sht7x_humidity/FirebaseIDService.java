@@ -1,7 +1,13 @@
 package com.example.max.sht7x_humidity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -10,18 +16,26 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
  */
 
 public class FirebaseIDService extends FirebaseInstanceIdService {
-    private static final String TAG = "FirebaseIDService";
+
+    private SharedPreferences notificationPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+        DatabaseReference database;
+        database = FirebaseDatabase.getInstance().getReference();
+        FirebaseUser currentUserAuth;
+        currentUserAuth = FirebaseAuth.getInstance().getCurrentUser();
+        notificationPreferences = getSharedPreferences(NotificationActivity.PREFERENCES_NOTIFICATIONS, Context.MODE_PRIVATE);
+        if(currentUserAuth != null) {
+            if (database != null) {
+                if (notificationPreferences.getBoolean(NotificationActivity.ON_OFF_NOTIFICATIONS, false)) {
+                    database = FirebaseDatabase.getInstance().getReference();
+                    database.child("users").child(currentUserAuth.getUid()).child("token").setValue(refreshedToken);
+                }
+            }
+        }
     }
-
-    public void sendRegistrationToServer(String refreshedToken) {
-
-    };
-
-
 }
