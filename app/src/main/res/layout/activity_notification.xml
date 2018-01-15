@@ -30,15 +30,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:visibility="gone">
+        android:paddingBottom="5dp">
 
         <TextView
+            android:id="@+id/threshold_textview"
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:textSize="15sp"
             android:layout_height="wrap_content"
-            android:text="@string/threshold"/>
+            android:text="@string/threshold"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/threshold"
@@ -49,7 +50,8 @@
             android:textSize="15sp"
             android:textColor="@android:color/tab_indicator_text"
             android:text="50"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <Spinner

@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +23,7 @@ public class NotificationActivity extends AppCompatActivity {
     private Switch notificationMute;
     private EditText threshold;
     private Spinner underAbove;
+    private TextView thresholdTextView;
 
     private SharedPreferences notificationPreferences;
     private SharedPreferences.Editor editor;
@@ -51,6 +53,7 @@ public class NotificationActivity extends AppCompatActivity {
         notificationMute = (Switch) findViewById(R.id.mute_notifications);
         threshold = (EditText) findViewById(R.id.threshold);
         underAbove = (Spinner) findViewById(R.id.under_above);
+        thresholdTextView = (TextView) findViewById(R.id.threshold_textview);
 
         boolean onOffNotification = notificationPreferences.getBoolean(ON_OFF_NOTIFICATIONS, false);
         notificationOnOff.setChecked(onOffNotification);
@@ -63,6 +66,7 @@ public class NotificationActivity extends AppCompatActivity {
                     threshold.setVisibility(View.GONE);
                     underAbove.setVisibility(View.GONE);
                     threshold.setVisibility(View.GONE);
+                    thresholdTextView.setVisibility(View.GONE);
                     database.child("users").child(currentUserAuth.getUid()).child("token").removeValue();
                 }
                 else {
@@ -70,6 +74,7 @@ public class NotificationActivity extends AppCompatActivity {
                     threshold.setVisibility(View.VISIBLE);
                     underAbove.setVisibility(View.VISIBLE);
                     threshold.setVisibility(View.VISIBLE);
+                    thresholdTextView.setVisibility(View.VISIBLE);
                     String refreshedToken = FirebaseInstanceId.getInstance().getToken();
                     database.child("users").child(currentUserAuth.getUid()).child("token").setValue(refreshedToken);
                 }

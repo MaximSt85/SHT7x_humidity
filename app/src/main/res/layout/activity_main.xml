@@ -20,14 +20,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity1"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"/>
@@ -38,14 +38,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature1"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"
@@ -64,14 +64,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity2"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"/>
@@ -82,14 +82,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature2"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"
@@ -108,14 +108,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity3"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"/>
@@ -126,14 +126,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature3"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"
@@ -152,14 +152,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity4"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"/>
@@ -170,14 +170,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature4"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"
@@ -196,14 +196,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity5"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"/>
@@ -214,14 +214,14 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature5"
             android:layout_width="0dp"
-            android:layout_weight="0.65"
+            android:layout_weight="0.6"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="-----"

@@ -189,16 +189,16 @@ public class MainActivity extends AppCompatActivity {
                     temperatures.add(String.valueOf(dataSnapshot.child(references.get(i)).getValue()));
                 }
 
-                textView_humidity1.setText(String.valueOf(humidities.get(0)));
-                textView_temperature1.setText(temperatures.get(0));
-                textView_humidity2.setText(String.valueOf(humidities.get(1)));
-                textView_temperature2.setText(temperatures.get(1));
-                textView_humidity3.setText(String.valueOf(humidities.get(2)));
-                textView_temperature3.setText(temperatures.get(2));
-                textView_humidity4.setText(String.valueOf(humidities.get(3)));
-                textView_temperature4.setText(temperatures.get(3));
-                textView_humidity5.setText(String.valueOf(humidities.get(4)));
-                textView_temperature5.setText(temperatures.get(4));
+                textView_humidity1.setText(String.format("%.2f", humidities.get(0)) + " %");
+                textView_temperature1.setText(temperatures.get(0) + " \u2103");
+                textView_humidity2.setText(String.format("%.2f", humidities.get(1)) + " %");
+                textView_temperature2.setText(temperatures.get(1) + " \u2103");
+                textView_humidity3.setText(String.format("%.2f", humidities.get(2)) + " %");
+                textView_temperature3.setText(temperatures.get(2) + " \u2103");
+                textView_humidity4.setText(String.format("%.2f", humidities.get(3)) + " %");
+                textView_temperature4.setText(temperatures.get(3) + " \u2103");
+                textView_humidity5.setText(String.format("%.2f", humidities.get(4)) + " %");
+                textView_temperature5.setText(temperatures.get(4) + " \u2103");
 
             }
 
