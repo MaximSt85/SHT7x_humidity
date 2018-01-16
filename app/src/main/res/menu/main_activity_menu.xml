@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/plot"
+        app:showAsAction="always"
+        android:id="@+id/main_menu_plot"
+        android:icon="@drawable/ic_plot"/>
+    <item
+        android:title="@string/notification"
+        app:showAsAction="never"
+        android:id="@+id/main_menu_notification"/>
+
+</menu>
