@@ -28,8 +28,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.d(TAG, "Remote message " + remoteMessage.getNotification().getBody());
-        sendNotification(remoteMessage.getNotification().getBody());
+
+        //sendNotification(remoteMessage.getNotification().getBody());
         //String text = remoteMessage.getNotification().getBody();
         //String title = "Notification from Firebase";
         //notifyThis(title, text);

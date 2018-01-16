@@ -31,8 +31,14 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Sensor2Activity"></activity>
-        <activity android:name=".NotificationActivity"></activity>
+        <activity
+            android:name=".Sensor2Activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
 
     </application>
 

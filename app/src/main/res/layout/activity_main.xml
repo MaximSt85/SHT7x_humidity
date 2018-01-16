@@ -20,17 +20,27 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity1"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"/>
+        <TextView
+            android:id="@+id/out_of_range1"
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
+            android:text="OUT OF RANGE"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,16 +48,16 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature1"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"
             android:paddingBottom="10dp"/>
     </LinearLayout>
@@ -64,17 +74,27 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity2"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"/>
+        <TextView
+            android:id="@+id/out_of_range2"
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
+            android:text="OUT OF RANGE"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,16 +102,16 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature2"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"
             android:paddingBottom="10dp"/>
     </LinearLayout>
@@ -108,17 +128,27 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity3"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"/>
+        <TextView
+            android:id="@+id/out_of_range3"
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
+            android:text="OUT OF RANGE"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -126,16 +156,16 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature3"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"
             android:paddingBottom="10dp"/>
     </LinearLayout>
@@ -152,17 +182,27 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity4"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"/>
+        <TextView
+            android:id="@+id/out_of_range4"
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
+            android:text="OUT OF RANGE"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -170,16 +210,16 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature4"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"
             android:paddingBottom="10dp"/>
     </LinearLayout>
@@ -196,17 +236,27 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/humidity_MainActivity"/>
         <TextView
             android:id="@+id/humidity5"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"/>
+        <TextView
+            android:id="@+id/out_of_range5"
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="wrap_content"
+            android:text="OUT OF RANGE"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:visibility="invisible"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -214,16 +264,16 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="@string/temperature_MainActivity"/>
         <TextView
             android:id="@+id/temperature5"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.65"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="-----"
             android:paddingBottom="10dp"/>
     </LinearLayout>

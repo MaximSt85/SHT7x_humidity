@@ -301,7 +301,7 @@ public class Sensor2Activity extends AppCompatActivity {
     }
 
     private void setOnValueListener() {
-        database.child("sht75").child("humidity").addValueEventListener(myValueEventListener = new ValueEventListener() {
+        database.child("sht75").child("data").child("humidityArray").addValueEventListener(myValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 

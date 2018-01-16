@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -178,5 +179,16 @@ public class NotificationActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (thresholdFromPreference.equals("")) {
+                MainActivity.makeToast(getResources().getString(R.string.set_threshold), this);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
