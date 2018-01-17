@@ -181,6 +181,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
                 dynamicPlot.addSeries(sine1Series, formatter1);
+                dynamicPlot.redraw();
             }
             else {
                 state[0] = true;
@@ -192,6 +193,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine3Series, formatter3);
                 dynamicPlot.addSeries(sine4Series, formatter4);
                 dynamicPlot.addSeries(sine5Series, formatter5);
+                dynamicPlot.redraw();
             }
         }
         if (item.getItemId() == R.id.plot_menu_sensor2){
@@ -207,6 +209,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
                 dynamicPlot.addSeries(sine2Series, formatter2);
+                dynamicPlot.redraw();
             }
             else {
                 state[1] = true;
@@ -218,6 +221,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine3Series, formatter3);
                 dynamicPlot.addSeries(sine4Series, formatter4);
                 dynamicPlot.addSeries(sine5Series, formatter5);
+                dynamicPlot.redraw();
             }
         }
         if (item.getItemId() == R.id.plot_menu_sensor3) {
@@ -233,7 +237,9 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
                 dynamicPlot.addSeries(sine3Series, formatter3);
-            } else {
+                dynamicPlot.redraw();
+            }
+            else {
                 state[2] = true;
                 state[0] = true;
                 state[1] = true;
@@ -243,6 +249,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine2Series, formatter2);
                 dynamicPlot.addSeries(sine4Series, formatter4);
                 dynamicPlot.addSeries(sine5Series, formatter5);
+                dynamicPlot.redraw();
             }
         }
         if (item.getItemId() == R.id.plot_menu_sensor4){
@@ -258,6 +265,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
                 dynamicPlot.addSeries(sine3Series, formatter4);
+                dynamicPlot.redraw();
             }
             else {
                 state[3] = true;
@@ -269,6 +277,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine2Series, formatter2);
                 dynamicPlot.addSeries(sine3Series, formatter3);
                 dynamicPlot.addSeries(sine5Series, formatter5);
+                dynamicPlot.redraw();
             }
         }
         if (item.getItemId() == R.id.plot_menu_sensor5){
@@ -284,6 +293,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
                 dynamicPlot.addSeries(sine5Series, formatter5);
+                dynamicPlot.redraw();
             }
             else {
                 state[4] = true;
@@ -295,9 +305,10 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine2Series, formatter2);
                 dynamicPlot.addSeries(sine3Series, formatter3);
                 dynamicPlot.addSeries(sine4Series, formatter4);
+                dynamicPlot.redraw();
             }
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     private void setOnValueListener() {
@@ -450,7 +461,6 @@ public class Sensor2Activity extends AppCompatActivity {
             return datasource.getY(seriesIndex, index);
         }
     }
-
 }
 
 

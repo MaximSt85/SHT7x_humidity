@@ -22,6 +22,7 @@
     <string name="mute_notification">Mute notifications</string>
     <string name="threshold">Threshold</string>
     <string name="set_threshold">Set threshold</string>
+    <string name="under_above">Choose under or Above</string>
 
     <string name="sensor1">1</string>
     <string name="sensor2">2</string>

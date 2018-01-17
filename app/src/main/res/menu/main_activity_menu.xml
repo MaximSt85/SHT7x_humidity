@@ -5,7 +5,7 @@
         android:title="@string/plot"
         app:showAsAction="always"
         android:id="@+id/main_menu_plot"
-        android:icon="@drawable/ic_plot"/>
+        android:icon="@drawable/ic_plot_light"/>
     <item
         android:title="@string/notification"
         app:showAsAction="never"
