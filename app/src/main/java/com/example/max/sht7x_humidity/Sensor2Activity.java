@@ -279,6 +279,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.addSeries(sine5Series, formatter5);
                 dynamicPlot.redraw();
             }
+            //123
         }
         if (item.getItemId() == R.id.plot_menu_sensor5){
             if (state[4]) {
