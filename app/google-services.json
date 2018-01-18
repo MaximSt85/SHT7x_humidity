@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:243895624645:android:e73433ba827f5d22",
+        "mobilesdk_app_id": "1:243895624645:android:a68bfec7effcd9dc",
         "android_client_info": {
-          "package_name": "com.antoinecampbell.firebase.demo"
+          "package_name": "com.example.max.sht7x_humidity"
         }
       },
       "oauth_client": [
@@ -39,9 +39,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:243895624645:android:a68bfec7effcd9dc",
+        "mobilesdk_app_id": "1:243895624645:android:0409f6a7bf997c28",
         "android_client_info": {
-          "package_name": "com.example.max.sht7x_humidity"
+          "package_name": "firebase.sht75.humidity"
         }
       },
       "oauth_client": [

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.max.sht7x_humidity">
+    package="firebase.sht75.humidity">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="firebase.sht75.humidity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,24 +20,24 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name="firebase.sht75.humidity.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".FirebaseIDService">
+        <service android:name="firebase.sht75.humidity.FirebaseIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".Sensor2Activity"
-            android:parentActivityName=".MainActivity">
+            android:name="firebase.sht75.humidity.Sensor2Activity"
+            android:parentActivityName="firebase.sht75.humidity.MainActivity">
         </activity>
         <activity
-            android:name=".NotificationActivity"
-            android:parentActivityName=".MainActivity">
+            android:name="firebase.sht75.humidity.NotificationActivity"
+            android:parentActivityName="firebase.sht75.humidity.MainActivity">
         </activity>
 
     </application>
