@@ -55,6 +55,7 @@
         android:paddingBottom="15dp">
 
         <TextView
+            android:id="@+id/under_above_text_view"
             android:layout_width="0dp"
             android:layout_weight="0.6"
             android:textSize="15sp"

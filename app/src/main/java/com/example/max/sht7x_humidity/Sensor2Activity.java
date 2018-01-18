@@ -264,7 +264,7 @@ public class Sensor2Activity extends AppCompatActivity {
                 dynamicPlot.removeSeries(sine3Series);
                 dynamicPlot.removeSeries(sine4Series);
                 dynamicPlot.removeSeries(sine5Series);
-                dynamicPlot.addSeries(sine3Series, formatter4);
+                dynamicPlot.addSeries(sine4Series, formatter4);
                 dynamicPlot.redraw();
             }
             else {

@@ -28,6 +28,7 @@ public class NotificationActivity extends AppCompatActivity {
     private EditText threshold;
     private Spinner underAbove;
     private TextView thresholdTextView;
+    private TextView underAboveTextView;
 
     private SharedPreferences notificationPreferences;
     private SharedPreferences.Editor editor;
@@ -59,6 +60,7 @@ public class NotificationActivity extends AppCompatActivity {
         threshold = (EditText) findViewById(R.id.threshold);
         underAbove = (Spinner) findViewById(R.id.under_above);
         thresholdTextView = (TextView) findViewById(R.id.threshold_textview);
+        underAboveTextView = (TextView) findViewById(R.id.under_above_text_view);
 
         boolean onOffNotificationmuteFromPreference = notificationPreferences.getBoolean(ON_OFF_NOTIFICATIONS, false);
         notificationOnOff.setChecked(onOffNotificationmuteFromPreference);
@@ -139,6 +141,8 @@ public class NotificationActivity extends AppCompatActivity {
             underAbove.setVisibility(View.GONE);
             threshold.setVisibility(View.GONE);
             thresholdTextView.setVisibility(View.GONE);
+            underAboveTextView.setVisibility(View.GONE);
+
             database.child("users").child(currentUserAuth.getUid()).child("token").removeValue();
         }
         else {
@@ -147,6 +151,7 @@ public class NotificationActivity extends AppCompatActivity {
             underAbove.setVisibility(View.VISIBLE);
             threshold.setVisibility(View.VISIBLE);
             thresholdTextView.setVisibility(View.VISIBLE);
+            underAboveTextView.setVisibility(View.VISIBLE);
             String refreshedToken = FirebaseInstanceId.getInstance().getToken();
             database.child("users").child(currentUserAuth.getUid()).child("token").setValue(refreshedToken);
         }
