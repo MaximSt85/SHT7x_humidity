@@ -320,11 +320,11 @@ public class MainActivity extends AppCompatActivity {
                 String temperature3 = dataSnapshot.child("temperature3").getValue().toString();
                 String temperature4 = dataSnapshot.child("temperature4").getValue().toString();
                 String temperature5 = dataSnapshot.child("temperature5").getValue().toString();
-                textView_temperature1.setText(temperature1 + " %");
-                textView_temperature2.setText(temperature2 + " %");
-                textView_temperature3.setText(temperature3 + " %");
-                textView_temperature4.setText(temperature4 + " %");
-                textView_temperature5.setText(temperature5 + " %");
+                textView_temperature1.setText(temperature1 + " \u2103");
+                textView_temperature2.setText(temperature2 + " \u2103");
+                textView_temperature3.setText(temperature3 + " \u2103");
+                textView_temperature4.setText(temperature4 + " \u2103");
+                textView_temperature5.setText(temperature5 + " \u2103");
             }
 
             @Override
