@@ -20,7 +20,7 @@
     </string-array>
     <string name="on_off_notification">Notification OFF/ON</string>
     <string name="mute_notification">Mute notifications</string>
-    <string name="threshold">Threshold</string>
+    <string name="threshold">Choose humidity threshold, %</string>
     <string name="set_threshold">Set threshold</string>
     <string name="under_above">Choose under or Above</string>
 
