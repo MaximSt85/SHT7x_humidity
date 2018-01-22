@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/on_off_notification"
-        android:id="@+id/on_off_notifications"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/tab_indicator_text"
-        android:paddingBottom="25dp"/>
-
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mute_notification"
-        android:id="@+id/mute_notifications"
-        android:textSize="15sp"
-        android:textColor="@android:color/tab_indicator_text"
-        android:paddingBottom="15dp"/>
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/threshold_textview"
-            android:layout_width="0dp"
-            android:layout_weight="0.6"
-            android:textSize="15sp"
+        <Switch
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/threshold"/>
+            android:text="@string/on_off_notification"
+            android:id="@+id/on_off_notifications"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/tab_indicator_text"
+            android:paddingBottom="25dp"/>
 
-        <EditText
-            android:id="@+id/threshold"
-            android:layout_width="0dp"
-            android:layout_weight="0.4"
+        <Switch
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="50"
-            android:inputType="number"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp">
-
-        <TextView
-            android:id="@+id/under_above_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="0.6"
-            android:textSize="15sp"
-            android:layout_height="wrap_content"
-            android:text="@string/under_above"/>
-
-        <Spinner
-            android:id="@+id/under_above"
-            android:layout_width="0dp"
-            android:layout_weight="0.4"
-            android:layout_height="wrap_content"
+            android:text="@string/mute_notification"
+            android:id="@+id/mute_notifications"
             android:textSize="15sp"
             android:textColor="@android:color/tab_indicator_text"
-            android:entries="@array/notification_array"/>
-    </LinearLayout>
+            android:paddingBottom="15dp"/>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/threshold_textview"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:text="@string/threshold"/>
+
+            <EditText
+                android:id="@+id/threshold"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="50"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/under_above_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:text="@string/under_above"/>
+
+            <Spinner
+                android:id="@+id/under_above"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@android:color/tab_indicator_text"
+                android:entries="@array/notification_array"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
