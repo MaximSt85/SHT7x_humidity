@@ -60,7 +60,7 @@ public class Sensor2Activity extends AppCompatActivity {
     private SampleDynamicXYDatasource data;
     private DatabaseReference database;
     private FirebaseObservable firebaseNotifier;
-    boolean fistTime;
+    boolean firstTime;
     ArrayList<String> humidityReferences = new ArrayList<>();
     SampleDynamicSeries sine1Series;
     SampleDynamicSeries sine2Series;
@@ -148,7 +148,7 @@ public class Sensor2Activity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance().getReference();
 
-        fistTime = true;
+        firstTime = true;
         humidityReferences.add("humidity1");
         humidityReferences.add("humidity2");
         humidityReferences.add("humidity3");
@@ -317,7 +317,7 @@ public class Sensor2Activity extends AppCompatActivity {
 
                 for (int i = 0; i < humidityReferences.size(); i++) {
                     DataSnapshot humidityDataSnapshot = dataSnapshot.child(humidityReferences.get(i));
-                    if (fistTime) {
+                    if (firstTime) {
                         for (DataSnapshot humidityItemDataSnapshot : humidityDataSnapshot.getChildren()) {
                             double humidity = (Double) humidityItemDataSnapshot.getValue();
                             data.queues.get(i).add(humidity);
@@ -329,7 +329,7 @@ public class Sensor2Activity extends AppCompatActivity {
                         data.queues.get(i).add(humidities.get(humidities.size() - 1));
                     }
                 }
-                fistTime = false;
+                firstTime = false;
                 data.SAMPLE_SIZE = data.queues.get(0).size();
                 firebaseNotifier.notifyObservers();
             }
