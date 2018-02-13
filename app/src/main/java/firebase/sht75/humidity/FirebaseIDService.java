@@ -2,6 +2,7 @@ package firebase.sht75.humidity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,14 +17,23 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 
 public class FirebaseIDService extends FirebaseInstanceIdService {
 
-    private SharedPreferences notificationPreferences;
+    private static final String TAG = "debugger";
+
+    private SharedPreferences tokenPreferences;
     private SharedPreferences.Editor editor;
+
+    public static String PREFERENCES_TOKEN = "preferencesToken";
+    public static String TOKEN = "token";
+    public static String TOKEN_UPDATED = "tokenUpdated";
 
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();
+
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        DatabaseReference database;
+        updateToken(refreshedToken);
+
+        /*DatabaseReference database;
         database = FirebaseDatabase.getInstance().getReference();
         FirebaseUser currentUserAuth;
         currentUserAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -35,6 +45,14 @@ public class FirebaseIDService extends FirebaseInstanceIdService {
                     database.child("users").child(currentUserAuth.getUid()).child("token").setValue(refreshedToken);
                 }
             }
-        }
+        }*/
+    }
+
+    public void updateToken(String token) {
+        tokenPreferences = getSharedPreferences(PREFERENCES_TOKEN, Context.MODE_PRIVATE);
+        editor = tokenPreferences.edit();
+        editor.putBoolean(TOKEN_UPDATED, false);
+        editor.putString(TOKEN, token);
+        editor.commit();
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
     double thresholdFromPreference;
     boolean underAboveFromPreference;
 
+    private SharedPreferences tokenPreferences;
+    private SharedPreferences.Editor editor;
+
     boolean running = true;
     boolean state = true;
 
@@ -107,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
         notificationPreferences = getSharedPreferences(NotificationActivity.PREFERENCES_NOTIFICATIONS, Context.MODE_PRIVATE);
 
+        tokenPreferences = getSharedPreferences(FirebaseIDService.PREFERENCES_TOKEN, Context.MODE_PRIVATE);
+        editor = tokenPreferences.edit();
     }
 
     @Override
@@ -181,7 +187,11 @@ public class MainActivity extends AppCompatActivity {
         }
         running = false;
         out_of_range1.setVisibility(View.INVISIBLE);
-        myThread.interrupt();
+        out_of_range2.setVisibility(View.INVISIBLE);
+        out_of_range3.setVisibility(View.INVISIBLE);
+        out_of_range4.setVisibility(View.INVISIBLE);
+        out_of_range5.setVisibility(View.INVISIBLE);
+        //myThread.interrupt();
     }
 
     @Override
@@ -209,6 +219,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setOnValueListener() {
+
+        if (!onOffNotificationmuteFromPreference) {
+            boolean tokenUpdated = tokenPreferences.getBoolean(FirebaseIDService.TOKEN_UPDATED, false);
+            if (!tokenUpdated) {
+                String token = tokenPreferences.getString(FirebaseIDService.TOKEN, "");
+                if (!token.equals("")) {
+                    database.child("users").child(currentUserAuth.getUid()).child("token").setValue(token, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError == null) {
+                                editor.putBoolean(FirebaseIDService.TOKEN_UPDATED, true);
+                                editor.commit();
+                            }
+                            else {makeToast(getResources().getString(R.string.could_not_refresh_token), MainActivity.this);}
+                        }
+                    });
+                }
+            }
+        }
+        else {
+            database.child("users").child(currentUserAuth.getUid()).child("token").removeValue();
+        }
+
         database.child("sht75").child("data").child("lastHumidity").addValueEventListener(myValueEventListenerHumidity = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

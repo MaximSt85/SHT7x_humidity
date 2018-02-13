@@ -12,6 +12,7 @@
     <string name="temperature_MainActivity">Temperature</string>
     <string name="signed_in">Successfully signed in. Welcome</string>
     <string name="could_not_sign_you_in">Could not sign you in. Please try again later</string>
+    <string name="could_not_refresh_token">Could not refresh token for Notifications</string>
 
 
     <string-array name="notification_array">
